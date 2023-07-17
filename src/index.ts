@@ -7,6 +7,7 @@ import {
   useRouter,
 } from "vue-router";
 import { type WritableComputedRef, computed } from "vue";
+import { getQueryParamsMeta } from "./meta";
 
 type QueryParamValue =
   | string
@@ -15,19 +16,20 @@ type QueryParamValue =
   | Array<string | number | boolean>;
 type DefaultQueryParams = Record<string, () => any>;
 
-const DEFAULT_QUERY_PARAMS: DefaultQueryParams = import.meta.env
-  .DEFAULT_QUERY_PARAMS as Record<string, () => any>;
+const queryParamsMeta = getQueryParamsMeta();
+const DEFAULT_QUERY_PARAMS: DefaultQueryParams =
+  queryParamsMeta.DEFAULT_QUERY_PARAMS as DefaultQueryParams;
 
 const QUERY_PARAM_VALUE_MAPPER_SET: {
   [key: string]: (rawValue: any) => any;
-} = import.meta.env.QUERY_PARAM_VALUE_MAPPER_SET as Record<
+} = queryParamsMeta.QUERY_PARAM_VALUE_MAPPER_SET as Record<
   string,
   (rawValue: any) => any
 >;
 
 const QUERY_PARAM_VALUE_MAPPER_GET: {
   [key: string]: (rawValue: any) => any;
-} = import.meta.env.QUERY_PARAM_VALUE_MAPPER_GET as Record<
+} = queryParamsMeta.QUERY_PARAM_VALUE_MAPPER_GET as Record<
   string,
   (rawValue: any) => any
 >;
