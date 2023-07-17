@@ -1,9 +1,14 @@
 import { useRoute, useRouter, } from "vue-router";
 import { computed } from "vue";
-const DEFAULT_QUERY_PARAMS = import.meta.env.DEFAULT_QUERY_PARAMS;
-const QUERY_PARAM_VALUE_MAPPER_SET = import.meta.env.QUERY_PARAM_VALUE_MAPPER_SET;
-const QUERY_PARAM_VALUE_MAPPER_GET = import.meta.env.QUERY_PARAM_VALUE_MAPPER_GET;
-for (const [key, value] of Object.entries({ DEFAULT_QUERY_PARAMS, QUERY_PARAM_VALUE_MAPPER_SET })) {
+import { getQueryParamsMeta } from "./meta";
+const queryParamsMeta = getQueryParamsMeta();
+const DEFAULT_QUERY_PARAMS = queryParamsMeta.DEFAULT_QUERY_PARAMS;
+const QUERY_PARAM_VALUE_MAPPER_SET = queryParamsMeta.QUERY_PARAM_VALUE_MAPPER_SET;
+const QUERY_PARAM_VALUE_MAPPER_GET = queryParamsMeta.QUERY_PARAM_VALUE_MAPPER_GET;
+for (const [key, value] of Object.entries({
+    DEFAULT_QUERY_PARAMS,
+    QUERY_PARAM_VALUE_MAPPER_SET,
+})) {
     if (!value) {
         throw new Error(`${key} not defined`);
     }
