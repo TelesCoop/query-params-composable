@@ -1,0 +1,19 @@
+{
+  "name": "query-params-composable",
+  "description": "A Vue 3 composable to manage query params.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "kout95 <antoine@telescoop.fr>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "compile": "npx tsc"
+  },
+  "dependencies": {
+    "vue": "^3.3.4",
+    "vue-router": "^4.2.4"
+  },
+  "devDependencies": {
+    "typescript": "^5.1.6"
+  }
+}
